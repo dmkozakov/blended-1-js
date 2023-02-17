@@ -114,7 +114,6 @@
 //     break;
 // }
 
-
 // 8. При завантаженні сторінки користувачу у prompt пропонується ввести число від 0 до 59 'Hello, enter please the number between  0 and 59'.
 //Зроби перевірку на відповідність введеного числа вказаному діапазону (0-59). Якщо число не відповідає виведіть
 //alert з повідомленням "The [number] is outside 0 and 59"
@@ -125,21 +124,52 @@
 // 31 - 45 3тя чверть
 // 46 - 59 4та чверть
 
-const value = prompt('Hello, enter please the number between  0 and 59')
-let message;
-if (value > 59 || value <0) {
-    message = `The ${value} is outside 0 and 59`;
+// const value = prompt('Hello, enter please the number between  0 and 59')
+// let message;
+// if (value > 59 || value <0) {
+//     message = `The ${value} is outside 0 and 59`;
+// }
+// else if (value <= 15 ) {
+//     message = `Number ${value} refers to 1 quarters`;
+// }
+// else if (value > 15 && value <= 30) {
+//     message = `Number ${value} refers to 2 quarters`;
+// }
+// else if (value > 30 && value <=45 ) {
+//     message = `Number ${value} refers to 3 quarters`;
+// }
+// else {
+//     message = `Number ${value} refers to 4 quarters`;
+// }
+// alert(message);
+
+//---------------------------------------------------------------------
+
+//9. Дано рядок, що складається із символів, наприклад, 'a1abcde'.
+// Перевір, що першим символом цього рядка є літера 'a'.
+// Якщо так - виведи 'yes' у консоль, в противному випадку виведи 'no'.
+
+// const str = "a1abcde";
+
+// if (str.startsWith("a1")) {
+//   console.log("yes");
+// } else {
+//   console.log("no");
+// }
+
+//---------------------------------------------------------------------
+
+// 10. Напишіть функцію, яка приймає два параметри довжину і елемент-заповнювач та повертає масив з вказаною довжиною і заповнює його переданим елементом
+// наприклад, виклик функції fillArray(3, 'a') має повернути масив ['a', 'a', 'a']
+
+function foo(length, padSymbol) {
+  const array = [];
+
+  for (let i = 0; i < length; i++) {
+    array.push(padSymbol);
+  }
+
+  return array;
 }
-else if (value <= 15 ) {
-    message = `Number ${value} refers to 1 quarters`;
-}
-else if (value > 15 && value <= 30) {
-    message = `Number ${value} refers to 2 quarters`;
-}
-else if (value > 30 && value <=45 ) {
-    message = `Number ${value} refers to 3 quarters`;
-}
-else {
-    message = `Number ${value} refers to 4 quarters`;
-}
-alert(message);
+
+console.log(foo(3, "aaa"));
