@@ -143,6 +143,17 @@
 // }
 // alert(message);
 
+let input = prompt("Hello, enter please the number between  0 and 59");
+
+if (input === "0") {
+  console.log(`Number 0 refers to 1 quarters`);
+} else if (input >= 0 && input <= 59) {
+  console.log(`Number ${input} refers to ${Math.ceil(input / 15)} quarters`);
+} else {
+  console.log(`The ${input} is outside 0 and 59`);
+}
+
+
 //---------------------------------------------------------------------
 
 //9. Дано рядок, що складається із символів, наприклад, 'a1abcde'.
