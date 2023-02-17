@@ -67,7 +67,7 @@
 //Якщо користувач вводить "adminPassword", то вивести у консоль рядок "Hello!"
 //Якщо користувач вводить щось відмінне від "adminPassword", то вивести рядок "Goodbye!"
 
-const login = prompt("Hello, please enter your login!");
+// const login = prompt("Hello, please enter your login!");
 
 // if (!login) {
 //   console.log("Authorization has been cancelled");
@@ -113,3 +113,33 @@ const login = prompt("Hello, please enter your login!");
 
 //     break;
 // }
+
+
+// 8. При завантаженні сторінки користувачу у prompt пропонується ввести число від 0 до 59 'Hello, enter please the number between  0 and 59'.
+//Зроби перевірку на відповідність введеного числа вказаному діапазону (0-59). Якщо число не відповідає виведіть
+//alert з повідомленням "The [number] is outside 0 and 59"
+// Визначте в яку чверть години попаде
+// це число(в першу, другу, третю чи четверту) та виведіть це повідомлення у консоль, наприклад, "Number [number] refers to 2 quarters".
+// 0 - 15 1ша чверть
+// 16 - 30 2га чверть
+// 31 - 45 3тя чверть
+// 46 - 59 4та чверть
+
+const value = prompt('Hello, enter please the number between  0 and 59')
+let message;
+if (value > 59 || value <0) {
+    message = `The ${value} is outside 0 and 59`;
+}
+else if (value <= 15 ) {
+    message = `Number ${value} refers to 1 quarters`;
+}
+else if (value > 15 && value <= 30) {
+    message = `Number ${value} refers to 2 quarters`;
+}
+else if (value > 30 && value <=45 ) {
+    message = `Number ${value} refers to 3 quarters`;
+}
+else {
+    message = `Number ${value} refers to 4 quarters`;
+}
+alert(message);
