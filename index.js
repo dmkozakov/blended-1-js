@@ -114,7 +114,6 @@
 //     break;
 // }
 
-
 // 8. При завантаженні сторінки користувачу у prompt пропонується ввести число від 0 до 59 'Hello, enter please the number between  0 and 59'.
 //Зроби перевірку на відповідність введеного числа вказаному діапазону (0-59). Якщо число не відповідає виведіть
 //alert з повідомленням "The [number] is outside 0 and 59"
@@ -125,21 +124,31 @@
 // 31 - 45 3тя чверть
 // 46 - 59 4та чверть
 
-const value = prompt('Hello, enter please the number between  0 and 59')
-let message;
-if (value > 59 || value <0) {
-    message = `The ${value} is outside 0 and 59`;
+// const value = prompt('Hello, enter please the number between  0 and 59')
+// let message;
+// if (value > 59 || value <0) {
+//     message = `The ${value} is outside 0 and 59`;
+// }
+// else if (value <= 15 ) {
+//     message = `Number ${value} refers to 1 quarters`;
+// }
+// else if (value > 15 && value <= 30) {
+//     message = `Number ${value} refers to 2 quarters`;
+// }
+// else if (value > 30 && value <=45 ) {
+//     message = `Number ${value} refers to 3 quarters`;
+// }
+// else {
+//     message = `Number ${value} refers to 4 quarters`;
+// }
+// alert(message);
+
+let input = prompt("Hello, enter please the number between  0 and 59");
+
+if (input === "0") {
+  console.log(`Number 0 refers to 1 quarters`);
+} else if (input >= 0 && input <= 59) {
+  console.log(`Number ${input} refers to ${Math.ceil(input / 15)} quarters`);
+} else {
+  console.log(`The ${input} is outside 0 and 59`);
 }
-else if (value <= 15 ) {
-    message = `Number ${value} refers to 1 quarters`;
-}
-else if (value > 15 && value <= 30) {
-    message = `Number ${value} refers to 2 quarters`;
-}
-else if (value > 30 && value <=45 ) {
-    message = `Number ${value} refers to 3 quarters`;
-}
-else {
-    message = `Number ${value} refers to 4 quarters`;
-}
-alert(message);
