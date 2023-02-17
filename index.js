@@ -41,6 +41,20 @@
 
 // }
 
+// }
+
+//4. За допомогою циклу for знайдіть добуток (результат множення) усіх парних чисел у проміжку від min до max включно
+
+// const min = 1;
+// const max = 7;
+// let result = 1;
+// for (let index = min; index <= max; index += 1) {
+//  if (index % 2 === 0) {
+//   result *= index;
+//  }
+// }
+// console.log(result);
+
 //5. Напишіть код, який буде запитувати логін за допомогою prompt "Hello, please enter your login!"
 // і виводити результат у консоль браузера
 
