@@ -68,19 +68,42 @@
 //"premium: false"
 //"mood: happy"
 
-const user = {
-  name: "John",
-  age: 20,
-  hobby: "tenis",
-  premium: true,
+// const user = {
+//   name: "John",
+//   age: 20,
+//   hobby: "tenis",
+//   premium: true,
+// };
+
+// user.mood = 'happy';
+// user.hobby = 'skydiving';
+// user.premium = false;
+
+// const keys = Object.keys(user);
+
+// for(const key of keys){
+// console.log(`${key} : ${user[key]}`)
+// }
+
+// ----------------------------------------------------------------------
+//2. Є об'єкт, в якому зберігаються зарплати команди. Напишіть функцію getTotalSalary, яка буде повертати загальну суму зарплат. Якщо об'єкт пустий, то функція має повернути 0
+
+const salaries = {
+  mango: 100,
+  poly: 160,
+  ajax: 1470,
 };
 
-user.mood = 'happy';
-user.hobby = 'skydiving';
-user.premium = false;
+let result = 0;
 
-const keys = Object.keys(user);
+function getTotalSalary() {
+  const values = Object.values(salaries);
+  for (const value of values) {
+    result += value;
 
-for(const key of keys){
-console.log(`${key} : ${user[key]}`)
-}
+  }
+    return result
+
+  }
+console.log(getTotalSalary());
+
