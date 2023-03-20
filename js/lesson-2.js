@@ -177,93 +177,93 @@
 
 // }
 
-const TYPES_TRANSACTION = {
-  DEPOSIT: "deposit",
-  WITHDRAW: "withdraw",
-};
+// const TYPES_TRANSACTION = {
+//   DEPOSIT: "deposit",
+//   WITHDRAW: "withdraw",
+// };
 
-const account = {
-  id: 0,
-  //поточний баланс рахунку
-  balance: 0,
-  //Історія трансакцій
-  transactions: [],
-  //Метод приймає суму та тип трансакції
-  //створює об'єкт трансакції за зразком {id, type, amount}
-  //додає його у масив трансакцій
-  //в залежності від типу трансакції викликає методи, які відповідають за збільшення/зменшення балансу
-  createTransaction(type, amount) {
-    this.id += 1;
+// const account = {
+//   id: 0,
+//   //поточний баланс рахунку
+//   balance: 0,
+//   //Історія трансакцій
+//   transactions: [],
+//   //Метод приймає суму та тип трансакції
+//   //створює об'єкт трансакції за зразком {id, type, amount}
+//   //додає його у масив трансакцій
+//   //в залежності від типу трансакції викликає методи, які відповідають за збільшення/зменшення балансу
+//   createTransaction(type, amount) {
+//     this.id += 1;
 
-    const dataTrans = {};
-    dataTrans.id = this.id;
-    dataTrans.type = type;
-    dataTrans.amount = amount;
-    dataTrans.status = false;
+//     const dataTrans = {};
+//     dataTrans.id = this.id;
+//     dataTrans.type = type;
+//     dataTrans.amount = amount;
+//     dataTrans.status = false;
 
-    if (type === TYPES_TRANSACTION.DEPOSIT) {
-      this.deposit(amount);
-      dataTrans.status = true;
-      this.transactions.push(dataTrans);
+//     if (type === TYPES_TRANSACTION.DEPOSIT) {
+//       this.deposit(amount);
+//       dataTrans.status = true;
+//       this.transactions.push(dataTrans);
 
-      return;
-    }
+//       return;
+//     }
 
-    if (type === TYPES_TRANSACTION.WITHDRAW) {
-      const isValid = this.withdraw(amount);
+//     if (type === TYPES_TRANSACTION.WITHDRAW) {
+//       const isValid = this.withdraw(amount);
 
-      if (isValid) {
-        dataTrans.status = true;
-        this.transactions.push(dataTrans);
-        return;
-      }
+//       if (isValid) {
+//         dataTrans.status = true;
+//         this.transactions.push(dataTrans);
+//         return;
+//       }
 
-      this.transactions.push(dataTrans);
-      return;
-    }
-  },
-  //Метод приймає суму трансакції і відповідає за додавання суми до балансу.
-  deposit(amount) {
-    this.balance += amount;
-  },
-  //Метод приймає суму трансакції і відповідає за віднімання суми до балансу.
-  //Якщо amount більше ніж поточний баланс, виводимо повідомлення в консоль про те, що недостатньо коштів на рахунку [You don't have enough funds in your account] і повертаємо null
-  withdraw(amount) {
-    if (amount > this.balance) {
-      console.log("You don't have enough funds in your account");
+//       this.transactions.push(dataTrans);
+//       return;
+//     }
+//   },
+//   //Метод приймає суму трансакції і відповідає за додавання суми до балансу.
+//   deposit(amount) {
+//     this.balance += amount;
+//   },
+//   //Метод приймає суму трансакції і відповідає за віднімання суми до балансу.
+//   //Якщо amount більше ніж поточний баланс, виводимо повідомлення в консоль про те, що недостатньо коштів на рахунку [You don't have enough funds in your account] і повертаємо null
+//   withdraw(amount) {
+//     if (amount > this.balance) {
+//       console.log("You don't have enough funds in your account");
 
-      return null;
-    }
+//       return null;
+//     }
 
-    this.balance -= amount;
-    return true;
-  },
-  //Метод повертає поточний баланс
-  getBalance() {
-    return this.balance;
-  },
-  //Метод шукає та повертає об'єкт трансакції по id
-  getTransactionDetails(idForSearch) {
-    return this.transactions.find((el) => el.id === idForSearch);
-  },
+//     this.balance -= amount;
+//     return true;
+//   },
+//   //Метод повертає поточний баланс
+//   getBalance() {
+//     return this.balance;
+//   },
+//   //Метод шукає та повертає об'єкт трансакції по id
+//   getTransactionDetails(idForSearch) {
+//     return this.transactions.find((el) => el.id === idForSearch);
+//   },
 
-  //Метод повертає загальну суму трансакції певного типу із всієї історії трансакцій
-  getTotalSumByType(type) {
-    return this.transactions
-      .filter((el) => el.type === type && el.status)
-      .reduce((acc, el) => (acc += el.amount), 0);
-  },
-};
+//   //Метод повертає загальну суму трансакції певного типу із всієї історії трансакцій
+//   getTotalSumByType(type) {
+//     return this.transactions
+//       .filter((el) => el.type === type && el.status)
+//       .reduce((acc, el) => (acc += el.amount), 0);
+//   },
+// };
 
-account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 2000);
-account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 5000);
-account.createTransaction(TYPES_TRANSACTION.WITHDRAW, 2000000);
-account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 4000);
-account.createTransaction(TYPES_TRANSACTION.WITHDRAW, 10000);
-account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 1000);
-account.createTransaction(TYPES_TRANSACTION.WITHDRAW, 1000);
-// console.log(account.getBalance());
+// account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 2000);
+// account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 5000);
+// account.createTransaction(TYPES_TRANSACTION.WITHDRAW, 2000000);
+// account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 4000);
+// account.createTransaction(TYPES_TRANSACTION.WITHDRAW, 10000);
+// account.createTransaction(TYPES_TRANSACTION.DEPOSIT, 1000);
+// account.createTransaction(TYPES_TRANSACTION.WITHDRAW, 1000);
+// // console.log(account.getBalance());
 
-// console.log(account.getTransactionDetails(1));
+// // console.log(account.getTransactionDetails(1));
 
-console.log(account.getTotalSumByType(TYPES_TRANSACTION.WITHDRAW));
+// console.log(account.getTotalSumByType(TYPES_TRANSACTION.WITHDRAW));
