@@ -38,11 +38,23 @@
 //строку и возвращает буль true, если строка совпадает с сохраненным
 //паролем и false - если не совпадает
 
-function savePassword(originalPassword) {
-  return function checkPassword(onCheck) {
-    return originalPassword === onCheck;
+// function savePassword(originalPassword) {
+//   return function checkPassword(onCheck) {
+//     return originalPassword === onCheck;
+//   };
+// }
+// const passwordUser1 = savePassword("qwwerer");
+// console.log(passwordUser1("qwwerer"));
+// console.log(passwordUser1("iuyuyttr"));
+
+// Напишите функцию для хранения скидки.Функция возвращает
+//другую функцию, которая принимает сумму покупки
+//и возвращает финальную сумму с сохраненной скидкой.
+function getDiscount(discount) {
+  return function getResultOrder(order) {
+    const result = order - order * discount;
+    return result;
   };
 }
-const passwordUser1 = savePassword("qwwerer");
-console.log(passwordUser1("qwwerer"));
-console.log(passwordUser1("iuyuyttr"));
+const getOrderDiscount10 = getDiscount(0.1);
+console.log(getOrderDiscount10(1000));
