@@ -49,12 +49,35 @@
 
 // Напишите функцию для хранения скидки.Функция возвращает
 //другую функцию, которая принимает сумму покупки
-//и возвращает финальную сумму с сохраненной скидкой.
-function getDiscount(discount) {
-  return function getResultOrder(order) {
-    const result = order - order * discount;
-    return result;
-  };
+// //и возвращает финальную сумму с сохраненной скидкой.
+// function getDiscount(discount) {
+//   return function getResultOrder(order) {
+//     const result = order - order * discount;
+//     return result;
+//   };
+// }
+// const getOrderDiscount10 = getDiscount(0.1);
+// console.log(getOrderDiscount10(1000));
+
+
+// Напишіть дві функції
+//makeProduct(name, price, callback) - приймає
+//ім'я та ціну товару, а також callback.
+//Функція створює об'єкт товару, додаючи йому унікальний
+//ідентіфікатор у властивість id та викликає callback
+//передаючи йому створений об'єкт.
+//showProduct(product) - коллбек, що приймає об'єкт
+//продукта і логірує його в консоль
+
+function makeProduct(name, price, callback) {
+  const product = {
+    name,
+    price,
+    id: Math.random()
+  }
+ callback(product)
 }
-const getOrderDiscount10 = getDiscount(0.1);
-console.log(getOrderDiscount10(1000));
+
+const showProduct = product => console.log(product)
+
+makeProduct('Banana', 100, showProduct)
