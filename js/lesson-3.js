@@ -87,66 +87,29 @@
 //и который наследует класс Worker, добавляя метод getHierarchyLevel
 //Реализовать задачу с помощью ES5 прототипов и ES6 классов
 
-// class Worker {
-//   #name;
-//   #age;
-//   #salary;
+class Worker {
+  constructor({ name, age, salary }) {
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+  }
 
-//   constructor({ name, age, salary }) {
-//     this.#name = name;
-//     this.#age = age;
-//     this.#salary = salary;
-//   }
+  getSalary() {
+    return this.salary;
+  }
+}
 
-//   getSalary() {
-//     return this.#salary;
-//   }
-// }
+class TopLevelWorker extends Worker {
+  constructor({ name, age, salary, hierarchyLevel }) {
+    super({ name, age, salary });
 
-// class TopLevelWorker extends Worker {
-//   #hierarchyLevel;
+    this.hierarchyLevel = hierarchyLevel;
+  }
 
-//   constructor({ name, age, salary, hierarchyLevel }) {
-//     super({ name, age, salary });
-
-//     this.#hierarchyLevel = hierarchyLevel;
-//   }
-
-//   getHierarchyLevel() {
-//     return this.#hierarchyLevel;
-//   }
-// }
-
-// const developer = new TopLevelWorker({
-//   name: "Mango",
-//   age: 78,
-//   salary: 4000,
-//   hierarchyLevel: "senior",
-// });
-
-// console.log(developer.getSalary());
-// console.log(developer.getHierarchyLevel());
-
-const Worker = function ({ name, age, salary }) {
-  this.name = name;
-  this.age = age;
-  this.salary = salary;
-};
-
-Worker.prototype.getSalary = function () {
-  return this.salary;
-};
-
-const TopLevelWorker = function ({ name, age, salary, hierarchyLevel }) {
-  Worker.call(this, { name, age, salary });
-  this.hierarchyLevel = hierarchyLevel;
-};
-
-TopLevelWorker.prototype.getSalary = Worker.prototype.getSalary;
-
-TopLevelWorker.prototype.getHierarchyLevel = function () {
-  return this.hierarchyLevel;
-};
+  getHierarchyLevel() {
+    return this.hierarchyLevel;
+  }
+}
 
 const developer = new TopLevelWorker({
   name: "Mango",
@@ -157,3 +120,34 @@ const developer = new TopLevelWorker({
 
 console.log(developer.getSalary());
 console.log(developer.getHierarchyLevel());
+
+// const Worker = function ({ name, age, salary }) {
+//   this.name = name;
+//   this.age = age;
+//   this.salary = salary;
+// };
+
+// Worker.prototype.getSalary = function () {
+//   return this.salary;
+// };
+
+// const TopLevelWorker = function ({ name, age, salary, hierarchyLevel }) {
+//   Worker.call(this, { name, age, salary });
+//   this.hierarchyLevel = hierarchyLevel;
+// };
+
+// TopLevelWorker.prototype.getSalary = Worker.prototype.getSalary;
+
+// TopLevelWorker.prototype.getHierarchyLevel = function () {
+//   return this.hierarchyLevel;
+// };
+
+// const developer = new TopLevelWorker({
+//   name: "Mango",
+//   age: 78,
+//   salary: 4000,
+//   hierarchyLevel: "senior",
+// });
+
+// console.log(developer.getSalary());
+// console.log(developer.getHierarchyLevel());
