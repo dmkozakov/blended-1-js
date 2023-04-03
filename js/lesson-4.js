@@ -34,11 +34,11 @@
 По нажатию на кнопку "SWAP ME" осуществляется обмен содержимым между двумя инпутами. 
 можете понажимать на нее несколько раз или вручную сменить содержимое инпутов.
 */
-const btn = document.querySelector("#swapButton");
-const leftInput = document.querySelector("#leftSwapInput");
-const rightInput = document.querySelector("#rightSwapInput");
+const btn = document.querySelector('#swapButton');
+const leftInput = document.querySelector('#leftSwapInput');
+const rightInput = document.querySelector('#rightSwapInput');
 
-btn.addEventListener("click", onChange);
+btn.addEventListener('click', onChange);
 
 function onChange() {
   const acc = leftInput.value;
@@ -55,6 +55,27 @@ function onChange() {
 "Раскрыть", при повторном нажатии текст снова становится доступен
 и кнопка принимает начальный вид.
 */
+
+const refs = {
+  hideBtn: document.querySelector('#passwordButton'),
+  input: document.querySelector('#passwordInput'),
+};
+
+refs.hideBtn.addEventListener('click', onHideBtnClick);
+
+function onHideBtnClick(e) {
+  let inputValue = refs.input.value;
+
+  if (refs.input.type === 'password') {
+    e.target.textContent = 'Скрыть';
+    refs.input.type = 'text';
+  } else {
+    e.target.textContent = 'Раскрыть';
+    refs.input.type = 'password';
+
+    refs.input.value = inputValue;
+  }
+}
 
 // ===================================================
 // ===================================================
