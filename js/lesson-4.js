@@ -116,6 +116,29 @@ function onSquareDecr() {
 https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 */
 
+
+
+document.addEventListener("click", onClickBox);
+
+
+function onClickBox (event) {
+  // if (event.target.id === "place") {
+  //  console.log("Вітаю! Ви потрапили у межі елементу!")
+  // } else {
+  //   console.log("Спробуйте ще раз!")
+  // }
+
+  if (document.querySelector("#place").contains(event.target)) {
+    console.log("Вітаю! Ви потрапили у межі елементу!")
+  } else {
+      console.log("Спробуйте ще раз!")
+    }
+
+}
+
+
+
+
 // ===================================================
 // ===================================================
 
