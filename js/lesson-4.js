@@ -5,27 +5,27 @@
 
 // ===================================================
 
-const btnEl = document.querySelector("#alertButton");
-const inputEl = document.querySelector("#alertInput");
+// const btnEl = document.querySelector("#alertButton");
+// const inputEl = document.querySelector("#alertInput");
 
-btnEl.addEventListener("click", onShow);
+// btnEl.addEventListener("click", onShow);
 
-function onShow() {
-  const value = inputEl.value;
+// function onShow() {
+//   const value = inputEl.value;
 
-  if (!value) {
-    alert("Введите значение в поле!!!");
-    return;
-  }
+//   if (!value) {
+//     alert("Введите значение в поле!!!");
+//     return;
+//   }
 
-  alert(value);
+//   alert(value);
 
-  clearInput();
-}
+//   clearInput();
+// }
 
-function clearInput() {
-  inputEl.value = "";
-}
+// function clearInput() {
+//   inputEl.value = "";
+// }
 
 // ===================================================
 
@@ -34,6 +34,17 @@ function clearInput() {
 По нажатию на кнопку "SWAP ME" осуществляется обмен содержимым между двумя инпутами. 
 можете понажимать на нее несколько раз или вручную сменить содержимое инпутов.
 */
+const btn = document.querySelector("#swapButton");
+const leftInput = document.querySelector("#leftSwapInput");
+const rightInput = document.querySelector("#rightSwapInput");
+
+btn.addEventListener("click", onChange);
+
+function onChange() {
+  const acc = leftInput.value;
+  leftInput.value = rightInput.value;
+  rightInput.value = acc;
+}
 
 // ===================================================
 // ===================================================
