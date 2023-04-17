@@ -18,91 +18,112 @@
     <ul id="task-list"></ul> */
 }
 
-let tasksArr = null;
+// let tasksArr = null;
 
-const KEY_TASKS_LS = "tasks-todo-list";
+// const KEY_TASKS_LS = "tasks-todo-list";
 
-const formRef = document.querySelector("#task-form");
-const taskListRef = document.querySelector("#task-list");
+// const formRef = document.querySelector("#task-form");
+// const taskListRef = document.querySelector("#task-list");
 
-getDataToLS();
-const markup = createMarkup(tasksArr);
-taskListRef.insertAdjacentHTML("beforeend", markup);
+// getDataToLS();
+// const markup = createMarkup(tasksArr);
+// taskListRef.insertAdjacentHTML("beforeend", markup);
 
-formRef.addEventListener("submit", handleSubmit);
-taskListRef.addEventListener("click", onDelete);
+// formRef.addEventListener("submit", handleSubmit);
+// taskListRef.addEventListener("click", onDelete);
 
-function handleSubmit(e) {
-  e.preventDefault();
+// function handleSubmit(e) {
+//   e.preventDefault();
 
-  const {
-    elements: { taskName },
-  } = e.currentTarget;
+//   const {
+//     elements: { taskName },
+//   } = e.currentTarget;
 
-  const isValid = validationInputValue(taskName.value);
+//   const isValid = validationInputValue(taskName.value);
 
-  if (!isValid) {
+//   if (!isValid) {
+//     setTimeout(() => {
+//       alert("Enter valid value!!!");
+//     }, 100);
+
+//     return;
+//   }
+
+//   const obj = {
+//     task: taskName.value,
+//     id: Date.now().toString(),
+//   };
+
+//   setDataToLS(obj);
+//   const markup = createMarkup([obj]);
+
+//   taskListRef.insertAdjacentHTML("beforeend", markup);
+// }
+
+// function validationInputValue(value) {
+//   return value.trim().length ? true : false;
+// }
+
+// function createMarkup(tasks) {
+//   return tasks
+//     .map(
+//       ({ task, id }) => `
+//       <li id="${id}">
+//         <p>${task}</p>
+//         <button class="js-delete-task" type="button">Delete</button>
+//       </li>
+//     `
+//     )
+//     .join("");
+// }
+
+// function onDelete({ target }) {
+//   if (target.classList.contains("js-delete-task")) {
+//     const el = target.closest("li");
+
+//     el.remove();
+
+//     const idEl = el.getAttribute("id");
+
+//     tasksArr = tasksArr.filter(({ id }) => id !== idEl);
+
+//     setDataToLS();
+//   }
+// }
+
+// function setDataToLS(task) {
+//   if (task) {
+//     tasksArr.push(task);
+//   }
+
+//   const data = JSON.stringify(tasksArr);
+
+//   localStorage.setItem(KEY_TASKS_LS, data);
+// }
+
+// function getDataToLS() {
+//   const data = localStorage.getItem(KEY_TASKS_LS);
+
+//   tasksArr = JSON.parse(data) || [];
+// }
+
+// --------------------------------------------------------
+
+// * ЗАДАЧА 1
+//  * Перероби функцію на проміс таким чином, щоб проміс повертав значення
+//  * через 2 секунди після виклику функції
+//  */
+
+// function greet() {
+//   return "hello world";
+// }
+
+function greet() {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      alert("Enter valid value!!!");
-    }, 100);
-
-    return;
-  }
-
-  const obj = {
-    task: taskName.value,
-    id: Date.now().toString(),
-  };
-
-  setDataToLS(obj);
-  const markup = createMarkup([obj]);
-
-  taskListRef.insertAdjacentHTML("beforeend", markup);
+      resolve("hello world");
+    }, 2000);
+  });
 }
 
-function validationInputValue(value) {
-  return value.trim().length ? true : false;
-}
-
-function createMarkup(tasks) {
-  return tasks
-    .map(
-      ({ task, id }) => `
-      <li id="${id}">
-        <p>${task}</p>
-        <button class="js-delete-task" type="button">Delete</button>
-      </li>
-    `
-    )
-    .join("");
-}
-
-function onDelete({ target }) {
-  if (target.classList.contains("js-delete-task")) {
-    const el = target.closest("li");
-
-    el.remove();
-
-    const idEl = el.getAttribute("id");
-
-    tasksArr = tasksArr.filter(({ id }) => id !== idEl);
-
-    setDataToLS();
-  }
-}
-
-function setDataToLS(task) {
-  if (task) {
-    tasksArr.push(task);
-  }
-
-  const data = JSON.stringify(tasksArr);
-
-  localStorage.setItem(KEY_TASKS_LS, data);
-}
-
-function getDataToLS() {
-  const data = localStorage.getItem(KEY_TASKS_LS);
-
-  tasksArr = JSON.parse(data) || [];
-}
+greet().then(console.log);
