@@ -9,5 +9,20 @@ export function createMarkup(data) {
       <p>${description}</p>
     </li>`
     )
-    .join('');
+    .join("");
+}
+
+export function createSingleProductMarkup({
+  brand,
+  category,
+  description,
+  images,
+}) {
+  return `
+  <div>
+    <img src="${images[0]}" alt="${category}" />
+    <h2${brand}h2>
+    <p>${category}</p>
+    <p>${description}</p>
+  </div>`;
 }
