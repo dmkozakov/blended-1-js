@@ -26,3 +26,15 @@ export function createSingleProductMarkup({
     <p>${description}</p>
   </div>`;
 }
+
+export function createNewProductMarkup(
+  {title, description, price}
+) {
+  
+  return `
+  <div>
+    <h2>${title}</h2>
+    <p>${price}</p>
+    <p>${description}</p>
+  </div>`;
+}

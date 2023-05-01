@@ -7,3 +7,7 @@ export async function fetchAllProducts() {
 export async function fetchSingleProduct(id) {
   return await instance.get(`/products/${id}`);
 }
+
+export async function addNewProduct(newProduct) {
+  return await instance.post(`/products/add`, newProduct);
+}

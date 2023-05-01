@@ -5,6 +5,8 @@ import { createMarkup } from "./services/markupService";
 
 import { fetchSingleProduct } from "./requests/products";
 import { createSingleProductMarkup } from "./services/markupService";
+import { addNewProduct } from "./requests/products";
+import { createNewProductMarkup } from "./services/markupService";
 
 const productContainer = document.querySelector("#allProducts");
 console.log(productContainer);
@@ -23,22 +25,41 @@ const singleProductForm = document.querySelector("#singleProductForm");
 
 const singleProductContainer = document.querySelector("#singleProduct");
 
-singleProductForm.addEventListener("submit", singleProductSubmitHandler);
+const newProductForm = document.querySelector("#newProductForm");
 
-async function singleProductSubmitHandler(e) {
+const newProductContainer = document.querySelector("#newProductSection");
+
+newProductForm.addEventListener("submit", renderNewProdukt);
+
+// singleProductForm.addEventListener("submit", singleProductSubmitHandler);
+
+// async function singleProductSubmitHandler(e) {
+//   e.preventDefault();
+//   const idValue = e.target.elements.id.value;
+
+//   if (idValue >= 1 && idValue <= 100) {
+//     try {
+//       const { data } = await fetchSingleProduct(idValue);
+//       const singleProductMarkup = createSingleProductMarkup(data);
+
+//       singleProductContainer.innerHTML = singleProductMarkup;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   } else {
+//     alert("enter valid value");
+//   }
+// }
+
+async function renderNewProdukt(e) {
   e.preventDefault();
-  const idValue = e.target.elements.id.value;
+  const title = e.target.elements.title.value;
+  const description = e.target.elements.description.value;
+  const price = e.target.elements.price.value;
 
-  if (idValue >= 1 && idValue <= 100) {
-    try {
-      const { data } = await fetchSingleProduct(idValue);
-      const singleProductMarkup = createSingleProductMarkup(data);
+  const { data } = await addNewProduct({ title, description, price });
 
-      singleProductContainer.innerHTML = singleProductMarkup;
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    alert("enter valid value");
-  }
+  const markup = createNewProductMarkup(data);
+
+  newProductContainer.innerHTML = markup;
 }
