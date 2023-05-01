@@ -11,3 +11,7 @@ export async function fetchSingleProduct(id) {
 export async function addNewProduct(newProduct) {
   return await instance.post(`/products/add`, newProduct);
 }
+
+export const removeProduct = async (id) => {
+  return await instance.delete(`/products/${id}`);
+};

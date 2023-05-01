@@ -7,6 +7,7 @@ import { fetchSingleProduct } from "./requests/products";
 import { createSingleProductMarkup } from "./services/markupService";
 import { addNewProduct } from "./requests/products";
 import { createNewProductMarkup } from "./services/markupService";
+import { removeProduct } from "./requests/products";
 
 const productContainer = document.querySelector("#allProducts");
 console.log(productContainer);
@@ -25,11 +26,17 @@ const singleProductForm = document.querySelector("#singleProductForm");
 
 const singleProductContainer = document.querySelector("#singleProduct");
 
+const fromDeleteProd = document.querySelector("#deletionProductForm");
+
+const deleteBtn = document.querySelector("#deleteBtn");
+
 const newProductForm = document.querySelector("#newProductForm");
 
 const newProductContainer = document.querySelector("#newProductSection");
 
 newProductForm.addEventListener("submit", renderNewProdukt);
+
+fromDeleteProd.addEventListener("submit", handleRemoveProd);
 
 // singleProductForm.addEventListener("submit", singleProductSubmitHandler);
 
@@ -62,4 +69,34 @@ async function renderNewProdukt(e) {
   const markup = createNewProductMarkup(data);
 
   newProductContainer.innerHTML = markup;
+}
+
+async function handleRemoveProd(e) {
+  e.preventDefault();
+  deleteBtn.disabled = true;
+
+  const {
+    deletionId: { value },
+  } = e.target.elements;
+
+  const idProd = Number(value);
+
+  if (isNaN(idProd) || idProd < 0 || idProd > 101) {
+    alert("Enter valid value!😤");
+    deleteBtn.disabled = false;
+
+    return;
+  }
+
+  try {
+    const { status } = await removeProduct(idProd);
+
+    if (status === 200) {
+      alert("SUCCESS😃");
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    deleteBtn.disabled = false;
+  }
 }
